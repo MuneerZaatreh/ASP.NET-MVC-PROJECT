@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Expose_Tracker.Models.Transaction>
+
+
+@{
+	ViewData["PageTitle"] = "Transaction";
+	ViewData["PageActionText"] = "+ New Transaction";
+	ViewData["PageActionUrl"] = "/Transactions/AddOrEdit";
+}
+<div class ="row">
+	
+	<div class="col-md-7">
+		<ejs-grid id="Transaction"dataSource="@Model" gridLines=None allowSorting="true" allowPaging="true">
+			<e-grid-pagesettings pageSize ="10"></e-grid-pagesettings>
+			<e-grid-columns>
+				<e-grid-column headerText="Category" field="CategiryTitleWithIcon" width="110px"></e-grid-column>
+				<e-grid-column  headerText="Date" field="Date"  textAlign="Left" width="110px" typeof="date" format="dd-M-yyyy">
+				</e-grid-column >
+				 <e-grid-column headerText="Amount" field="FormattedAmount" width="110px"></e-grid-column>
+				<e-grid-column headerText="Actions" template = "#ActionColumnTemplate" width="150px"></e-grid-column>
+			</e-grid-columns>
+		</ejs-grid>
+	</div>
+	<script id="ActionColumnTemplate" type="text/x-template">
+<div class="d-flex flex-row justify-content-start">
+	<a class="btn btn-sm no-a-decoration" href="/Transactions/AddOrEdit/${TransactionId}/">
+		<i class ="fa-solid fa-pen fa-lg"></i>
+		</a>
+		<form action ="/Transactions/Delete/${TransactionId}" method="POST">
+		@Html.AntiForgeryToken()
+		<button type ="submit" class ="btn btn-sm btn-link no-a-decoration" onclick="return confirm(&quot;Are You Sure to delete this Record?&quot;)">
+		<i class ="fa-solid fa-trash-can fa-lg text-danger"></i>
+		</button>
+		</form>
+</div>
+</script>
+

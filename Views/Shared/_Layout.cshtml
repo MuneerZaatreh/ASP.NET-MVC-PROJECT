@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expose_Tracker</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <!-- Syncfusion ASP.NET Core controls styles -->
+        <link href="https://cdn.syncfusion.com/ej2/20.2.43/bootstrap5-dark.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!--  <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/20.2.43/material.css" /> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Montserrat:wght@400;600;700&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Expose_Tracker.styles.css" asp-append-version="true" />
+    <!-- Syncfusion ASP.NET Core controls scripts -->
+    <script src="https://cdn.syncfusion.com/ej2/20.2.43/dist/ej2.min.js"></script>
+<SCRIPT type="text/javascript">
+    window.history.forward();
+    function noBack() { window.history.forward(); }
+</SCRIPT>
+</head>
+<body onload="noBack();"
+    onpageshow="if (event.persisted) noBack();" onunload="">
+    <partial name ="_SideBar" />
+
+    <div class="main-content">
+
+    <div class="container-fluid mt-5">
+        <div class="row justify-content-end">
+            <div class="col-md-8">
+        <main role="main" class="pb-3">
+            <div class ="row">
+                <div class="col-md-7">
+                    <div class = "d-flex flex-column mb-5">
+                        <div class="d-flex mb-1">
+                            <div class="flex-grow-1">
+                            <h3 class="fw-bold" style="Font-size: 30px">@ViewData["PageTitle"]</h3>
+                        </div>
+                        <div>
+                            @if (ViewData["PageActionText"] != null)
+											{
+								<a class ="btn btn-success" href ="@ViewData["PageActionUrl"]">
+													@ViewData["PageActionText"]
+								</a>
+											}
+						</div>
+						</div>
+					</div>
+				</div>
+			</div>
+						@RenderBody()
+		</main>
+			</div>
+		</div>
+	</div>
+	</div>
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="~/js/site.js" asp-append-version="true"></script>
+	@await RenderSectionAsync("Scripts", required: false)
+		<!-- Syncfusion Script Manager -->
+	<ejs-scripts></ejs-scripts>
+</body>
+</html>
